@@ -17,7 +17,7 @@ import {
   image9
 } from "./assets/images";
 
-const ImageGallery = () => {
+const ImageGallery = ({setSelectedItem}) => {
   const [images, setImages] = useState([
     {id: 1, src: image1},
     {id: 2, src: image2},
@@ -49,6 +49,7 @@ const ImageGallery = () => {
             id={image.id}
             src={image.src}
             moveImage={moveImage}
+            setSelectedItem={setSelectedItem}
           />
         ))}
       </div>
@@ -56,7 +57,7 @@ const ImageGallery = () => {
   );
 };
 
-const ImageItem = ({id, index, src, moveImage}) => {
+const ImageItem = ({id, index, src, moveImage, setSelectedItem}) => {
   const [, ref] = useDrag({
     type: "IMAGE",
     item: {id, index}
@@ -74,7 +75,8 @@ const ImageItem = ({id, index, src, moveImage}) => {
 
   return (
     <div ref={node => ref(drop(node))} className=" gallery-item">
-      <div>
+      <div onClick={() => setSelectedItem(prevItem => [...prevItem, src])}>
+        <input type="checkbox" name="" id="" />
         <img src={src} className="gallery_img" />
       </div>
     </div>

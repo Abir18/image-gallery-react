@@ -2,7 +2,7 @@
 
 .gallery {
   margin: 0 auto;
-  height: 50vh;
+  /* height: 50vh; */
   width: 80%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
